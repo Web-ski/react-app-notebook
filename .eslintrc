@@ -21,11 +21,11 @@
     //"react/react-in-jsx-scope": "off",
     // allow jsx syntax in js files (for next.js project)
     //"react/jsx-one-expression-per-line": 1,
-    "react/jsx-max-props-per-line": [1,
-      {
-        "maximum": 1
-      }
-    ],
+    "react/jsx-max-props-per-line": [1, {
+      "maximum": 1,
+      "when": "always"
+    }],
+    "react/jsx-props-no-spreading": 0,
     "react/jsx-filename-extension": [1, {
       "extensions": [".js", ".jsx"]
     }] //should add ".ts" if typescript project
