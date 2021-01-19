@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  background-color: #6204fb;
+  background-color: #304ffe;
   color: white;
   padding: 15px 25px;
   letter-spacing: 2px;
@@ -11,13 +11,13 @@ const Button = styled.button`
   font-weight: 600;
   border: none;
   outline: none;
-  border-radius: 25px;
+  //border-radius: 25px;
   text-transform: uppercase;
 
   ${({ secondary }) =>
     secondary &&
     css`
-      background-color: #e1d9ff;
+      background-color: #c5cae9;
       color: black;
     `}
 `;
