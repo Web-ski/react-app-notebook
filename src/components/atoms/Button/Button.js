@@ -1,14 +1,14 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  background-color: #304ffe;
+  background-color: ${({ theme }) => theme.primary};
   color: white;
   padding: 15px 25px;
   letter-spacing: 2px;
   font-size: 14px;
   width: ${({ width }) => width || 'max-content'};
   height: 50px;
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.regular};
   border: none;
   outline: none;
   //border-radius: 25px;
@@ -17,8 +17,15 @@ const Button = styled.button`
   ${({ secondary }) =>
     secondary &&
     css`
-      background-color: #c5cae9;
-      color: black;
+      background-color: ${({ theme }) => theme.secondary};
+      color: white;
+    `}
+
+  ${({ tertiary }) =>
+    tertiary &&
+    css`
+      background-color: ${({ theme }) => theme.tertiary};
+      color: white;
     `}
 `;
 

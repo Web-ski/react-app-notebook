@@ -14,3 +14,4 @@ export const Primary = () => (
   <Button disabled={boolean('Disabled', false)}>{text('Label', 'Hello')}</Button>
 );
 export const Secondary = () => <Button secondary>Hello</Button>;
+export const Tertiary = () => <Button tertiary>Plus</Button>;
