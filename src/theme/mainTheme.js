@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 export const theme = {
+  white: 'white',
   mainColor: 'dodgerblue',
   primary: '#304ffe',
   secondary: 'darkturquoise',

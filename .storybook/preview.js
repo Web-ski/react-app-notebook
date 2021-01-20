@@ -1,11 +1,15 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme/mainTheme';
+import GlobalStyle from 'theme/GlobalStyle';
 
 export const decorators = [
   (Story) => (
-    <ThemeProvider theme={theme}>
-      <Story />
-    </ThemeProvider>
+    <>
+      <GlobalStyle />
+      <ThemeProvider theme={theme}>
+        <Story />
+      </ThemeProvider>
+    </>
   ),
 ];
