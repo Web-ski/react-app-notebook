@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 export const theme = {
+  mainColor: 'dodgerblue',
   primary: '#304ffe',
-  secondary: '#0026ca',
+  secondary: 'darkturquoise',
   tertiary: '#ff3d00',
   grey1: '#c5cae9',
   regular: '300',
