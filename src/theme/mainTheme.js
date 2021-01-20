@@ -5,7 +5,9 @@ export const theme = {
   primary: '#304ffe',
   secondary: 'darkturquoise',
   tertiary: '#ff3d00',
-  grey1: '#c5cae9',
+  grey1: '#eeeeee',
+  grey2: '#dddddd',
+  grey3: '#333333',
   regular: '300',
   bold: '600',
   fontSize: {
