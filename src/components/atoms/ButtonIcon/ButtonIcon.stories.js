@@ -14,7 +14,7 @@ const MainBackground = styled.div`
   align-items: center;
   width: 500px;
   height: 500px;
-  background: ${({ theme }) => theme.primary};
+  background: ${({ theme }) => theme.mainColor};
 `;
 
 export default {
@@ -24,7 +24,8 @@ export default {
 };
 
 export const Bulb = () => <ButtonIcon icon={bulbIcon} />;
-export const Active = () => <ButtonIcon icon={bulbIcon} />;
+export const Active = () => <ButtonIcon active
+icon={bulbIcon} />;
 export const Logout = () => <ButtonIcon icon={logoutIcon} />;
 export const Pen = () => <ButtonIcon icon={penIcon} />;
 export const Plus = () => <ButtonIcon icon={plusIcon} />;
