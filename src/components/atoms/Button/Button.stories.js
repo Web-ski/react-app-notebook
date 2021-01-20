@@ -1,17 +1,11 @@
-// Button.story.js
-
 import React from 'react';
-import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import Button from './Button';
 
 export default {
-  title: 'Path/To/Button',
+  title: 'Button',
   component: Button,
-  decorators: [withKnobs],
 };
 
-export const Primary = () => (
-  <Button disabled={boolean('Disabled', false)}>{text('Label', 'Hello')}</Button>
-);
-export const Secondary = () => <Button secondary>Hello</Button>;
-export const Tertiary = () => <Button tertiary>Plus</Button>;
+export const Primary = () => <Button>Hello</Button>;
+export const Secondary = () => <Button secondary>Second</Button>;
+export const Tertiary = () => <Button tertiary>Add</Button>;
