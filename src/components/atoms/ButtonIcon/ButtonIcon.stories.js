@@ -24,8 +24,8 @@ export default {
 };
 
 export const Bulb = () => <ButtonIcon icon={bulbIcon} />;
-export const Active = () => <ButtonIcon active
-icon={bulbIcon} />;
+// export const Active = () => <ButtonIcon active
+// icon={bulbIcon} />;
 export const Logout = () => <ButtonIcon icon={logoutIcon} />;
 export const Pen = () => <ButtonIcon icon={penIcon} />;
 export const Plus = () => <ButtonIcon icon={plusIcon} />;

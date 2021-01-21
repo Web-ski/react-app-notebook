@@ -2,8 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap');
-
-  *, *::before, *::after {
+  @import url('https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap');
+  
+    *, *::before, *::after {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -16,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem; //happy rems
     font-family: "Poppins", sans-serif;
+    padding-left: 150px;
   }
 `;
 

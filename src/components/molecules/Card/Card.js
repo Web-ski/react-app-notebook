@@ -1,8 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
+import TWITTER_PHOTO from 'assets/nieczuja.jpg';
+import LINK_ICON from 'assets/link.svg';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -12,12 +15,16 @@ const StyledWrapper = styled.div`
   position: relative;
   display: grid;
   grid-template-rows: 0.25fr 1fr;
-  border-top: solid 10px ${({ theme }) => theme.mainColor};
 `;
 
 const InnerWrapper = styled.div`
+  position: relative;
   padding: 17px 30px;
-  background-color: ${({ grey, theme }) => (grey ? theme.grey1 : 'white')};
+  background-color: ${({ theme }) => theme.grey1};
+  border-top: solid 10px ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  :first-of-type {
+    z-index: 2;
+  }
 
   ${({ flex }) =>
     flex &&
@@ -25,6 +32,8 @@ const InnerWrapper = styled.div`
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      border: none;
+      background-color: ${({ theme }) => theme.white};
     `}
 `;
 
@@ -38,11 +47,37 @@ const StyledHeading = styled(Heading)`
   margin: 5px 0 0;
 `;
 
-const Card = () => (
+const StyledAvatar = styled.img`
+  width: 85px;
+  height: 85px;
+  border: 10px solid ${({ theme }) => theme.grey1};
+  position: absolute;
+  border-radius: 50%;
+  right: 25px;
+  top: 20px;
+`;
+
+const StyledLinkButton = styled.a`
+  display: block;
+  width: 47px;
+  height: 47px;
+  background: white url(${LINK_ICON});
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: absolute;
+  border-radius: 50%;
+  right: 25px;
+  top: 20px;
+`;
+
+const Card = ({ cardType }) => (
   <StyledWrapper>
-    <InnerWrapper grey>
+    <InnerWrapper activeColor={cardType}>
       <StyledHeading>Hello man</StyledHeading>
       <DateInfo>3 days</DateInfo>
+      {cardType === 'twitter' && <StyledAvatar src={TWITTER_PHOTO} />}{' '}
+      {cardType === 'article' && <StyledLinkButton href="https://nieczuja-portfolio.pl" />}
     </InnerWrapper>
     <InnerWrapper flex>
       <Paragraph>
@@ -53,5 +88,13 @@ const Card = () => (
     </InnerWrapper>
   </StyledWrapper>
 );
+
+Card.propTypes = {
+  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+};
+
+Card.defaultProps = {
+  cardType: 'note',
+};
 
 export default Card;

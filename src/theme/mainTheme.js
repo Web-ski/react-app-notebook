@@ -1,15 +1,16 @@
 /* eslint-disable import/prefer-default-export */
 export const theme = {
   white: 'white',
-  mainColor: 'dodgerblue',
-  primary: '#304ffe',
-  secondary: 'darkturquoise',
-  tertiary: '#ff3d00',
+  mainColor: '#A74AC7',
+  note: '#A74AC7',
+  twitter: '#306EFF',
+  article: '#FF8040',
   grey1: '#eeeeee',
   grey2: '#dddddd',
   grey3: '#333333',
   regular: '300',
   bold: '600',
+  xbold: '900',
   fontSize: {
     xxs: '1rem',
     xs: '1.2rem',
