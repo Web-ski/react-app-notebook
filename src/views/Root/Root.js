@@ -6,8 +6,8 @@ import Twitters from 'views/Twitters';
 import Articles from 'views/Articles';
 
 const Root = () => (
-  <MainTemplate>
-    <BrowserRouter>
+  <BrowserRouter>
+    <MainTemplate>
       <Switch>
         <Route exact
 path="/">
@@ -20,7 +20,7 @@ path="/">
           <Articles />
         </Route>
       </Switch>
-    </BrowserRouter>
-  </MainTemplate>
+    </MainTemplate>
+  </BrowserRouter>
 );
 export default Root;

@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
   body {
     font-size: 1.6rem; //happy rems
     font-family: "Poppins", sans-serif;
+    padding-left: 150px;
   }
 `;
 

@@ -10,6 +10,7 @@ export const theme = {
   grey3: '#333333',
   regular: '300',
   bold: '600',
+  xbold: '900',
   fontSize: {
     xxs: '1rem',
     xs: '1.2rem',
