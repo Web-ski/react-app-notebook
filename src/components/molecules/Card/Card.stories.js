@@ -9,3 +9,5 @@ export default {
 };
 
 export const Normal = () => <Card />;
+export const Secondary = () => <Card cardType="twitter" />;
+export const Tertiary = () => <Card cardType="article" />;
