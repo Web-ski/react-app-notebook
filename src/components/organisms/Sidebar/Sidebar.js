@@ -22,18 +22,43 @@ const Wrapper = styled.div`
 `;
 
 const Brand = styled.div`
+  position: relative;
   width: min-content;
+  height: min-content;
   text-align: justify;
   font-weight: ${({ theme }) => theme.xbold};
   text-transform: uppercase;
-  line-height: 110%;
+  line-height: 120%;
   color: white;
+  background-color: black;
+  padding: 5px 10px;
+
+  &:after {
+    display: block;
+    position: absolute;
+    content: '';
+    height: 10px;
+    width: 10px;
+    right: 8px;
+    top: 8px;
+    border-radius: 50px;
+    background-color: ${({ theme }) => theme.mainColor};
+  }
+`;
+
+const Italic = styled.span`
+  text-transform: lowercase;
+  font-family: 'Clicker Script', sans-serif;
+  font-size: ${({ theme }) => theme.fontSize.xl};
+  font-weight: ${({ theme }) => theme.regular};
 `;
 
 const Sidebar = () => (
   <Wrapper>
     <Brand>
-      <h2>Note Book</h2>
+      <h2>
+        <Italic>net</Italic> Book
+      </h2>
     </Brand>
     <div>
       <ButtonIcon exact

@@ -1,13 +1,10 @@
 import React from 'react';
-import Button from 'components/atoms/Button/Button';
+import UserPageTemplate from 'templates/UserPageTemplate';
 import Heading from 'components/atoms/Heading/Heading';
 
 const Notes = () => (
-  <>
+  <UserPageTemplate>
     <Heading big>Notes</Heading>
-    <Button width="200px">Close / Save</Button>
-    <Button secondary>Remove</Button>
-    <Button tertiary>Add</Button>
-  </>
+  </UserPageTemplate>
 );
 export default Notes;
