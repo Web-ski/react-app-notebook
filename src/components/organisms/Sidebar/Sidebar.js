@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import bulbIcon from 'assets/bulb.svg';
 import logoutIcon from 'assets/logout.svg';
@@ -18,7 +19,8 @@ const Wrapper = styled.div`
   top: 0;
   height: 100vh;
   width: 150px;
-  background-color: ${({ theme }) => theme.mainColor};
+  background-color: ${({ activeColor, theme }) =>
+    activeColor ? theme[activeColor] : theme.mainColor};
 `;
 
 const Brand = styled.div`
@@ -53,8 +55,8 @@ const Italic = styled.span`
   font-weight: ${({ theme }) => theme.regular};
 `;
 
-const Sidebar = () => (
-  <Wrapper>
+const Sidebar = ({ pageType }) => (
+  <Wrapper activeColor={pageType}>
     <Brand>
       <h2>
         <Italic>net</Italic> Book
@@ -81,6 +83,10 @@ icon={logoutIcon}
 activeclass="active" />
   </Wrapper>
 );
+
+Sidebar.propTypes = {
+  pageType: PropTypes.string.isRequired,
+};
 
 export default Sidebar;
 

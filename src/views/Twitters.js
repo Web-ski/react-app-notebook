@@ -1,10 +1,15 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
-import Heading from 'components/atoms/Heading/Heading';
+import Card from 'components/molecules/Card/Card';
 
 const Twitters = () => (
-  <UserPageTemplate>
-    <Heading big>Twitters</Heading>
+  <UserPageTemplate pageType="twitter">
+    <Card cardType="twitter" />
+    <Card cardType="twitter" />
+    <Card cardType="twitter" />
+    <Card cardType="twitter" />
+    <Card cardType="twitter" />
+    <Card cardType="twitter" />
   </UserPageTemplate>
 );
 export default Twitters;

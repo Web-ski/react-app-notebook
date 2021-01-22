@@ -1,10 +1,15 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
-import Heading from 'components/atoms/Heading/Heading';
+import Card from 'components/molecules/Card/Card';
 
 const Articles = () => (
-  <UserPageTemplate>
-    <Heading big>Articles</Heading>
+  <UserPageTemplate pageType="article">
+    <Card cardType="article" />
+    <Card cardType="article" />
+    <Card cardType="article" />
+    <Card cardType="article" />
+    <Card cardType="article" />
+    <Card cardType="article" />
   </UserPageTemplate>
 );
 export default Articles;

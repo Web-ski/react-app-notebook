@@ -1,10 +1,15 @@
 import React from 'react';
 import UserPageTemplate from 'templates/UserPageTemplate';
-import Heading from 'components/atoms/Heading/Heading';
+import Card from 'components/molecules/Card/Card';
 
 const Notes = () => (
-  <UserPageTemplate>
-    <Heading big>Notes</Heading>
+  <UserPageTemplate pageType="note">
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
+    <Card cardType="note" />
   </UserPageTemplate>
 );
 export default Notes;
