@@ -4,7 +4,6 @@ import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
-import TWITTER_PHOTO from 'assets/nieczuja.jpg';
 import LINK_ICON from 'assets/link.svg';
 
 const StyledWrapper = styled.div`
@@ -50,7 +49,7 @@ const StyledHeading = styled(Heading)`
 const StyledAvatar = styled.img`
   width: 85px;
   height: 85px;
-  border: 10px solid ${({ theme }) => theme.grey1};
+  border: 10px solid ${({ theme }) => theme.grey2};
   position: absolute;
   border-radius: 50%;
   right: 25px;
@@ -71,19 +70,20 @@ const StyledLinkButton = styled.a`
   top: 20px;
 `;
 
-const Card = ({ cardType }) => (
+const Card = ({ cardType, title, created, twitterName, articleUrl, content }) => (
   <StyledWrapper>
     <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Hello man</StyledHeading>
-      <DateInfo>3 days</DateInfo>
-      {cardType === 'twitter' && <StyledAvatar src={TWITTER_PHOTO} />}{' '}
-      {cardType === 'article' && <StyledLinkButton href="https://nieczuja-portfolio.pl" />}
+      <StyledHeading>{title}</StyledHeading>
+      <DateInfo>{created}</DateInfo>
+      {cardType === 'twitter' && (
+        <StyledAvatar
+          src={`https://res.cloudinary.com/dthynrfew/image/twitter_name/${twitterName}.jpg`}
+        />
+      )}
+      {cardType === 'article' && <StyledLinkButton href={articleUrl} />}
     </InnerWrapper>
     <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
-        repellendus illum
-      </Paragraph>
+      <Paragraph>{content}</Paragraph>
       <Button secondary>REMOVE</Button>
     </InnerWrapper>
   </StyledWrapper>
@@ -91,10 +91,17 @@ const Card = ({ cardType }) => (
 
 Card.propTypes = {
   cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  twitterName: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
 };
 
 Card.defaultProps = {
   cardType: 'note',
+  twitterName: null,
+  articleUrl: null,
 };
 
 export default Card;
