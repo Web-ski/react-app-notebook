@@ -1,5 +1,5 @@
 import React from 'react';
-import UserPageTemplate from 'templates/UserPageTemplate';
+import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
 const articles = [
@@ -34,17 +34,18 @@ const articles = [
 ];
 
 const Articles = () => (
-  <UserPageTemplate pageType="article">
-    {articles.map((item) => (
+  <GridTemplate pageType="articles">
+    {articles.map(({ title, content, articleUrl, created, id }) => (
       <Card
-        cardType="article"
-        title={item.title}
-        content={item.content}
-        articleUrl={item.articleUrl}
-        created={item.created}
-        key={item.title}
+        cardId={id}
+        cardType="articles"
+        title={title}
+        content={content}
+        articleUrl={articleUrl}
+        created={created}
+        key={title}
       />
     ))}
-  </UserPageTemplate>
+  </GridTemplate>
 );
 export default Articles;

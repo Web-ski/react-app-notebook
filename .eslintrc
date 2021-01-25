@@ -4,6 +4,11 @@
     "prettier",
     "prettier/react"
   ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
   "ecmaFeatures": {
     "modules": true
   },
@@ -29,11 +34,6 @@
     "react/jsx-filename-extension": [1, {
       "extensions": [".js", ".jsx"]
     }] //should add ".ts" if typescript project
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
   },
   "settings": {
     "import/resolver": {
