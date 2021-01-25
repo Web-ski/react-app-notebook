@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
 import Notes from 'views/Notes';
 import Twitters from 'views/Twitters';
@@ -11,6 +11,9 @@ const Root = () => (
       <Switch>
         <Route exact
 path="/">
+          <Redirect to="/notes" />
+        </Route>
+        <Route path="/notes">
           <Notes />
         </Route>
         <Route path="/twitters">
