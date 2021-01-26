@@ -73,7 +73,6 @@ const StyledLinkButton = styled.a`
 
 const Card = ({ cardId, cardType, title, created, twitterName, articleUrl, content }) => {
   const [redirect, setRedirect] = useState(false);
-
   const handleCardClick = () => {
     setRedirect(true);
   };
