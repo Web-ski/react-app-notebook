@@ -87,7 +87,7 @@ const Card = ({ cardId, cardType, title, created, twitterName, articleUrl, conte
         <DateInfo>{created}</DateInfo>
         {cardType === 'twitters' && (
           <StyledAvatar
-            src={`https://res.cloudinary.com/dthynrfew/image/twitter_name/${twitterName}.jpg`}
+            src={`https://res.cloudinary.com/dthynrfew/image/twitter_name/${twitterName}`}
           />
         )}
         {cardType === 'articles' && <StyledLinkButton href={articleUrl} />}
