@@ -19,8 +19,8 @@ const Wrapper = styled.div`
   top: 0;
   height: 100vh;
   width: 150px;
-  background-color: ${({ activeColor, theme }) =>
-    activeColor ? theme[activeColor] : theme.mainColor};
+  background-color: ${({ activecolor, theme }) =>
+    activecolor ? theme[activecolor] : theme.mainColor};
 `;
 
 const Brand = styled.div`
@@ -56,7 +56,7 @@ const Italic = styled.span`
 `;
 
 const Sidebar = ({ pageType }) => (
-  <Wrapper activeColor={pageType}>
+  <Wrapper activecolor={pageType}>
     <Brand>
       <h2>
         <Italic>net</Italic> Book

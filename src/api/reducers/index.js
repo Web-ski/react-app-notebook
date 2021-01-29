@@ -100,14 +100,12 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, { payload, type }) => {
-  console.log(state, payload, type);
+  console.log(payload, type);
   switch (type) {
     case 'REMOVE_ITEM':
       return {
         ...state,
-        ...state,
-        // eslint-disable-next-line spaced-comment
-        //[payload.itemType]: [...state[payload.itemType].filter((item) => item.id !== payload.id)],
+        [payload.itemType]: [...state[payload.itemType].filter((item) => item.id !== payload.id)],
       };
     default: {
       return {

@@ -82,7 +82,7 @@ const DetailsTemplate = ({
 
         <Button as={Link}
 to={`/${pageType}`}
-activeColor={pageType}>
+activecolor={pageType}>
           Save/Close
         </Button>
       </StyledWrapperNote>
@@ -97,7 +97,7 @@ DetailsTemplate.propTypes = {
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
-  cardId: PropTypes.string.isRequired,
+  cardId: PropTypes.number.isRequired,
 };
 
 DetailsTemplate.defaultProps = {

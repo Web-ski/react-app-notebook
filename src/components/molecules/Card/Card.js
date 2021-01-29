@@ -23,7 +23,7 @@ const InnerWrapper = styled.div`
   position: relative;
   padding: 17px 30px;
   background-color: ${({ theme }) => theme.grey1};
-  border-top: solid 10px ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  border-top: solid 10px ${({ activecolor, theme }) => (activecolor ? theme[activecolor] : 'white')};
   :first-of-type {
     z-index: 2;
   }
@@ -74,7 +74,6 @@ const StyledLinkButton = styled.a`
 `;
 
 const Card = ({
-  // eslint-disable-next-line react/prop-types
   removeAction,
   cardId,
   cardType,
@@ -85,19 +84,16 @@ const Card = ({
   content,
 }) => {
   const [redirect, setRedirect] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const handleCardClick = () => {
     setRedirect(true);
   };
-
-  console.log(typeof removeAction);
 
   if (redirect) {
     return <Redirect to={`${cardType}/${cardId}`} />;
   }
   return (
-    <StyledWrapper>
-      <InnerWrapper activeColor={cardType}>
+    <StyledWrapper onClick={() => handleCardClick()}>
+      <InnerWrapper activecolor={cardType}>
         <StyledHeading>{title}</StyledHeading>
         <DateInfo>{created}</DateInfo>
         {cardType === 'twitters' && (
