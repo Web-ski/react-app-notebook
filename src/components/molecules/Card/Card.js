@@ -122,12 +122,7 @@ Card.propTypes = {
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
   cardId: PropTypes.string.isRequired,
-  removeAction: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.objectOf(PropTypes.string),
-  ]).isRequired,
+  removeAction: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
@@ -6,6 +7,7 @@ import Input from 'components/atoms/Input/Input';
 import Heading from 'components/atoms/Heading/Heading';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import UserPageTemplate from 'templates/UserPageTemplate';
+import withContext from 'hots/withContext';
 
 const StyledWrapper = styled.div`
   padding: 40px;
@@ -30,7 +32,8 @@ const StyledParagraph = styled(Paragraph)`
   margin: 0;
 `;
 
-const GridTemplate = ({ children, pageType }) => (
+// eslint-disable-next-line react/prop-types
+const GridTemplate = ({ children, pageType, context }) => (
   <UserPageTemplate pageType={pageType}>
     <Sidebar pageType={pageType} />
     <StyledWrapper>
@@ -54,4 +57,4 @@ GridTemplate.defaultProps = {
   pageType: 'notes',
 };
 
-export default GridTemplate;
+export default withContext(GridTemplate);
