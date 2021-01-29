@@ -21,12 +21,24 @@ const Twitters = ({ twitters }) => (
 );
 
 const mapStateToProps = (state) => {
-  const { twitters } = state.payload;
+  const { twitters } = state;
   return { twitters };
 };
 
 Twitters.propTypes = {
-  twitters: PropTypes.string.isRequired,
+  twitters: PropTypes.arrayOf(
+    PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      created: PropTypes.string.isRequired,
+      twitterName: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
+    }),
+  ),
+};
+
+Twitters.defaultProps = {
+  twitters: [],
 };
 
 export default connect(mapStateToProps)(Twitters);

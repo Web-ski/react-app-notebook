@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import LINK_ICON from 'assets/link.svg';
+import removeItemAction from 'api/actions';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -71,17 +73,30 @@ const StyledLinkButton = styled.a`
   top: 20px;
 `;
 
-const Card = ({ cardId, cardType, title, created, twitterName, articleUrl, content }) => {
+const Card = ({
+  // eslint-disable-next-line react/prop-types
+  removeAction,
+  cardId,
+  cardType,
+  title,
+  created,
+  twitterName,
+  articleUrl,
+  content,
+}) => {
   const [redirect, setRedirect] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const handleCardClick = () => {
     setRedirect(true);
   };
+
+  console.log(typeof removeAction);
 
   if (redirect) {
     return <Redirect to={`${cardType}/${cardId}`} />;
   }
   return (
-    <StyledWrapper onClick={handleCardClick}>
+    <StyledWrapper>
       <InnerWrapper activeColor={cardType}>
         <StyledHeading>{title}</StyledHeading>
         <DateInfo>{created}</DateInfo>
@@ -94,7 +109,10 @@ const Card = ({ cardId, cardType, title, created, twitterName, articleUrl, conte
       </InnerWrapper>
       <InnerWrapper flex>
         <Paragraph>{content}</Paragraph>
-        <Button secondary>REMOVE</Button>
+        <Button secondary
+onClick={() => removeAction(cardType, cardId)}>
+          REMOVE
+        </Button>
       </InnerWrapper>
     </StyledWrapper>
   );
@@ -108,6 +126,12 @@ Card.propTypes = {
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
   cardId: PropTypes.string.isRequired,
+  removeAction: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.objectOf(PropTypes.string),
+  ]).isRequired,
 };
 
 Card.defaultProps = {
@@ -116,4 +140,8 @@ Card.defaultProps = {
   articleUrl: null,
 };
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  removeAction: (itemType, id) => dispatch(removeItemAction(itemType, id)),
+});
+
+export default connect(null, mapDispatchToProps)(Card);
