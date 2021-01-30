@@ -1,30 +1,8 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from 'react';
-import { useRouteMatch } from 'react-router-dom';
-import { routes } from 'routes';
+import React from 'react';
 import DetailTemplate from 'templates/DetailsTemplate';
 
 const DetailsPage = () => {
-  const [type, setType] = useState('notes');
-  const match = useRouteMatch();
-
-  useEffect(() => {
-    switch (match.path) {
-      case routes.note:
-        setType('notes');
-        break;
-      case routes.twitter:
-        setType('twitters');
-        break;
-      case routes.article:
-        setType('articles');
-        break;
-      default:
-        setType('notes');
-        break;
-    }
-  }, [match]);
-
   const mockyArticle = {
     id: 1,
     title: 'Super title about React',
@@ -37,7 +15,6 @@ const DetailsPage = () => {
 
   return (
     <DetailTemplate
-      pageType={type}
       title={mockyArticle.title}
       cardId={mockyArticle.id}
       content={mockyArticle.content}

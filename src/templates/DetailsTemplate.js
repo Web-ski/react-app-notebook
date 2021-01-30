@@ -7,6 +7,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import LINK_ICON from 'assets/link.svg';
+import withContext from 'hots/withContext';
 
 const StyledWrapper = styled.div`
   padding: 40px;
@@ -58,31 +59,31 @@ const StyledLink = styled.a`
 `;
 
 const DetailsTemplate = ({
-  pageType,
   title,
   created,
   twitterName,
   articleUrl,
   content,
   cardId,
+  pageContext,
 }) => (
-  <UserPageTemplate pageType={pageType}>
+  <UserPageTemplate pageType={pageContext}>
     <StyledWrapper>
       <StyledWrapperNote>
         <StyledHeading big>{title}</StyledHeading>
         <DateInfo>{created}</DateInfo>
         <Paragraph>No {cardId}</Paragraph>
         <Paragraph>{content}</Paragraph>
-        {pageType === 'twitters' && (
+        {pageContext === 'twitters' && (
           <StyledImage
             src={`https://res.cloudinary.com/dthynrfew/image/twitter_name/${twitterName}.jpg`}
           />
         )}
-        {pageType === 'articles' && <StyledLink href={articleUrl} />}
+        {pageContext === 'articles' && <StyledLink href={articleUrl} />}
 
         <Button as={Link}
-to={`/${pageType}`}
-activecolor={pageType}>
+to={`/${pageContext}`}
+activecolor={pageContext}>
           Save/Close
         </Button>
       </StyledWrapperNote>
@@ -91,7 +92,7 @@ activecolor={pageType}>
 );
 
 DetailsTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
+  pageContext: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
@@ -105,6 +106,6 @@ DetailsTemplate.defaultProps = {
   articleUrl: null,
 };
 
-export default DetailsTemplate;
+export default withContext(DetailsTemplate);
 
 // import styled from 'styled-components';

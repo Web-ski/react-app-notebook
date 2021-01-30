@@ -31,7 +31,7 @@
       "maximum": 1,
       "when": "always"
     }],
-    "import/no-extraneous-dependencies": 0,
+    //"import/no-extraneous-dependencies": 1,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-filename-extension": [1, {
       "extensions": [".js", ".jsx"]

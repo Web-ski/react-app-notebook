@@ -6,7 +6,7 @@ const withContext = (Component) =>
     return (
       <PageContext.Consumer>
         {(context) => <Component {...props}
-context={context} />}
+pageContext={context} />}
       </PageContext.Consumer>
     );
   };

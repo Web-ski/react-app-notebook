@@ -8,7 +8,8 @@ import { theme } from 'theme/mainTheme';
 
 const MainTemplate = (props) => {
   const [pageType, setPageType] = useState('notes');
-  console.log(pageType);
+  // eslint-disable-next-line spaced-comment
+  //console.log(pageType);
 
   const { children } = props;
   useEffect(() => {
