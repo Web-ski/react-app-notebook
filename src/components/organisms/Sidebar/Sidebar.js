@@ -95,7 +95,11 @@ activeClassName="active" />
 };
 
 Sidebar.propTypes = {
-  pageContext: PropTypes.string.isRequired,
+  pageContext: PropTypes.string,
+};
+
+Sidebar.defaultProps = {
+  pageContext: 'notes',
 };
 
 export default withContext(Sidebar);
