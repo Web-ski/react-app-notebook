@@ -7,7 +7,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
 import LINK_ICON from 'assets/link.svg';
-import removeItemAction from 'api/actions';
+import { removeItemAction } from 'api/actions/index';
 import withContext from 'hots/withContext';
 
 const StyledWrapper = styled.div`
@@ -118,10 +118,10 @@ onClick={() => removeAction(pageContext, cardId)}>
 Card.propTypes = {
   pageContext: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
   created: PropTypes.string.isRequired,
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
-  content: PropTypes.string.isRequired,
   cardId: PropTypes.string.isRequired,
   removeAction: PropTypes.func.isRequired,
 };

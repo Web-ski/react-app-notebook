@@ -5,6 +5,8 @@ import Input from 'components/atoms/Input/Input';
 import Button from 'components/atoms/Button/Button';
 import Heading from 'components/atoms/Heading/Heading';
 import withContext from 'hots/withContext';
+import { connect } from 'react-redux';
+import { addItemAction } from 'api/actions';
 
 const StyledWrapper = styled.div`
   z-index: 99;
@@ -31,20 +33,35 @@ const StyledInput = styled(Input)`
   margin: 0 0 20px;
 `;
 
-const RightBar = ({ pageContext, isVisible }) => (
+const RightBar = ({ pageContext, isVisible, addAction }) => (
   <StyledWrapper isVisible={isVisible}>
     <Heading big>Add new {pageContext}</Heading>
     <StyledInput placeholder={pageContext === 'twitters' ? 'twitter account name' : 'title'} />
     {pageContext === 'articles' && <StyledInput placeholder="link" />}
     <StyledTexArea as="textarea"
 placeholder="text" />
-    <Button activeColor={pageContext}>Add Note</Button>
+    <Button
+      onClick={() =>
+        addAction(pageContext, {
+          title: 'hejjejj',
+          content: 'kokoninfokvxovdvndvodn ivjoadfivhodv njv iaivjiajv',
+        })
+      }
+      activeColor={pageContext}
+    >
+      Add Note
+    </Button>
   </StyledWrapper>
 );
+
+const mapDispatchToProps = (dispatch) => ({
+  addAction: (itemType, itemContent) => dispatch(addItemAction(itemType, itemContent)),
+});
 
 RightBar.propTypes = {
   pageContext: PropTypes.string.isRequired,
   isVisible: PropTypes.bool.isRequired,
+  addAction: PropTypes.func.isRequired,
 };
 
-export default withContext(RightBar);
+export default connect(null, mapDispatchToProps)(withContext(RightBar));
