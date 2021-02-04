@@ -2,9 +2,9 @@
 export const theme = {
   white: 'white',
   mainColor: '#A74AC7',
-  note: '#A74AC7',
-  twitter: '#306EFF',
-  article: '#FF8040',
+  notes: '#A74AC7',
+  twitters: '#306EFF',
+  articles: '#FF8040',
   grey1: '#eeeeee',
   grey2: '#dddddd',
   grey3: '#333333',

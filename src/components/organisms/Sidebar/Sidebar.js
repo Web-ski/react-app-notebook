@@ -1,11 +1,13 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import bulbIcon from 'assets/bulb.svg';
 import logoutIcon from 'assets/logout.svg';
 import penIcon from 'assets/pen.svg';
 import twitterIcon from 'assets/twitter.svg';
+import withContext from 'hots/withContext';
 
 const Wrapper = styled.div`
   position: fixed;
@@ -18,7 +20,8 @@ const Wrapper = styled.div`
   top: 0;
   height: 100vh;
   width: 150px;
-  background-color: ${({ theme }) => theme.mainColor};
+  background-color: ${({ activeColor, theme }) =>
+    activeColor ? theme[activeColor] : theme.mainColor};
 `;
 
 const Brand = styled.div`
@@ -53,35 +56,48 @@ const Italic = styled.span`
   font-weight: ${({ theme }) => theme.regular};
 `;
 
-const Sidebar = () => (
-  <Wrapper>
-    <Brand>
-      <h2>
-        <Italic>net</Italic> Book
-      </h2>
-    </Brand>
-    <div>
-      <ButtonIcon exact
-as={NavLink}
-to="/"
-icon={penIcon}
-activeclass="active" />
+const Sidebar = ({ pageContext }) => {
+  const pageTypes = ['notes', 'twitters', 'articles'];
+
+  return (
+    <Wrapper activeColor={pageContext}>
+      <Brand>
+        <h2>
+          <Italic>net</Italic> Book
+        </h2>
+      </Brand>
+      <div>
+        <ButtonIcon
+          as={NavLink}
+          to="/notes"
+          icon={penIcon}
+          className={pageTypes[0] === pageContext && 'active'}
+        />
+        <ButtonIcon
+          as={NavLink}
+          to="/twitters"
+          icon={twitterIcon}
+          className={pageTypes[1] === pageContext && 'active'}
+        />
+        <ButtonIcon
+          as={NavLink}
+          to="/articles"
+          icon={bulbIcon}
+          className={pageTypes[2] === pageContext && 'active'}
+        />
+      </div>
       <ButtonIcon as={NavLink}
-to="/twitters"
-icon={twitterIcon}
-activeclass="active" />
-      <ButtonIcon as={NavLink}
-to="/articles"
-icon={bulbIcon}
-activeclass="active" />
-    </div>
-    <ButtonIcon as={NavLink}
 to="/login"
 icon={logoutIcon}
-activeclass="active" />
-  </Wrapper>
-);
+activeClassName="active" />
+    </Wrapper>
+  );
+};
 
-export default Sidebar;
+Sidebar.propTypes = {
+  pageContext: PropTypes.string.isRequired,
+};
+
+export default withContext(Sidebar);
 
 // import plusIcon from 'assets/plus.svg';

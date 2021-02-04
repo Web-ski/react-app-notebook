@@ -4,6 +4,11 @@
     "prettier",
     "prettier/react"
   ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  },
   "ecmaFeatures": {
     "modules": true
   },
@@ -11,6 +16,7 @@
     "jest": true
   },
   "globals": {
+    "window": true,
     "document": true
   },
   "rules": {
@@ -25,15 +31,11 @@
       "maximum": 1,
       "when": "always"
     }],
+    //"import/no-extraneous-dependencies": 1,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-filename-extension": [1, {
       "extensions": [".js", ".jsx"]
     }] //should add ".ts" if typescript project
-  },
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module",
-    "allowImportExportEverywhere": true
   },
   "settings": {
     "import/resolver": {

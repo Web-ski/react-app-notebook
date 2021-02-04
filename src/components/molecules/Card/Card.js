@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 import styled, { css } from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Heading from 'components/atoms/Heading/Heading';
 import Button from 'components/atoms/Button/Button';
-import TWITTER_PHOTO from 'assets/nieczuja.jpg';
 import LINK_ICON from 'assets/link.svg';
+import removeItemAction from 'api/actions';
 
 const StyledWrapper = styled.div`
   min-height: 380px;
@@ -21,7 +23,7 @@ const InnerWrapper = styled.div`
   position: relative;
   padding: 17px 30px;
   background-color: ${({ theme }) => theme.grey1};
-  border-top: solid 10px ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : 'white')};
+  border-top: solid 10px ${({ activecolor, theme }) => (activecolor ? theme[activecolor] : 'white')};
   :first-of-type {
     z-index: 2;
   }
@@ -50,7 +52,7 @@ const StyledHeading = styled(Heading)`
 const StyledAvatar = styled.img`
   width: 85px;
   height: 85px;
-  border: 10px solid ${({ theme }) => theme.grey1};
+  border: 5px solid ${({ theme }) => theme.grey2};
   position: absolute;
   border-radius: 50%;
   right: 25px;
@@ -71,30 +73,66 @@ const StyledLinkButton = styled.a`
   top: 20px;
 `;
 
-const Card = ({ cardType }) => (
-  <StyledWrapper>
-    <InnerWrapper activeColor={cardType}>
-      <StyledHeading>Hello man</StyledHeading>
-      <DateInfo>3 days</DateInfo>
-      {cardType === 'twitter' && <StyledAvatar src={TWITTER_PHOTO} />}{' '}
-      {cardType === 'article' && <StyledLinkButton href="https://nieczuja-portfolio.pl" />}
-    </InnerWrapper>
-    <InnerWrapper flex>
-      <Paragraph>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit nemo ducimus fuga
-        repellendus illum
-      </Paragraph>
-      <Button secondary>REMOVE</Button>
-    </InnerWrapper>
-  </StyledWrapper>
-);
+const Card = ({
+  removeAction,
+  cardId,
+  cardType,
+  title,
+  created,
+  twitterName,
+  articleUrl,
+  content,
+}) => {
+  const [redirect, setRedirect] = useState(false);
+  const handleCardClick = () => {
+    setRedirect(true);
+  };
+
+  if (redirect) {
+    return <Redirect to={`${cardType}/${cardId}`} />;
+  }
+  return (
+    <StyledWrapper onClick={() => handleCardClick()}>
+      <InnerWrapper activecolor={cardType}>
+        <StyledHeading>{title}</StyledHeading>
+        <DateInfo>{created}</DateInfo>
+        {cardType === 'twitters' && (
+          <StyledAvatar
+            src={`https://res.cloudinary.com/dthynrfew/image/twitter_name/${twitterName}`}
+          />
+        )}
+        {cardType === 'articles' && <StyledLinkButton href={articleUrl} />}
+      </InnerWrapper>
+      <InnerWrapper flex>
+        <Paragraph>{content}</Paragraph>
+        <Button secondary
+onClick={() => removeAction(cardType, cardId)}>
+          REMOVE
+        </Button>
+      </InnerWrapper>
+    </StyledWrapper>
+  );
+};
 
 Card.propTypes = {
-  cardType: PropTypes.oneOf(['note', 'twitter', 'article']),
+  cardType: PropTypes.oneOf(['notes', 'twitters', 'articles']),
+  title: PropTypes.string.isRequired,
+  created: PropTypes.string.isRequired,
+  twitterName: PropTypes.string,
+  articleUrl: PropTypes.string,
+  content: PropTypes.string.isRequired,
+  cardId: PropTypes.string.isRequired,
+  removeAction: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
-  cardType: 'note',
+  cardType: 'notes',
+  twitterName: null,
+  articleUrl: null,
 };
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+  removeAction: (itemType, id) => dispatch(removeItemAction(itemType, id)),
+});
+
+export default connect(null, mapDispatchToProps)(Card);

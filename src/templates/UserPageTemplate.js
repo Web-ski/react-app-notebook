@@ -10,7 +10,7 @@ const UserPageTemplate = ({ children }) => (
 );
 
 UserPageTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]).isRequired,
 };
 
 export default UserPageTemplate;
