@@ -7,16 +7,16 @@ const removeItemAction = (itemType, id) => ({
 });
 
 const addItemAction = (itemType, content) => {
-  const getId = () => {
-    const x = Math.random().toString(36).substr(2, 9);
-    return x;
-  };
+  const getId = () => `_${Math.random().toString(36).substr(2, 9)}`;
+
   return {
     type: 'ADD_ITEM',
     payload: {
       itemType,
-      id: getId(),
-      content,
+      itemContent: {
+        id: getId(),
+        ...content,
+      },
     },
   };
 };
@@ -33,4 +33,4 @@ export { removeItemAction, addItemAction };
 //   twitterName: 'PaweNO1',
 //   articleUrl: 'https://nieczuja-portfolio.pl',
 //   created: '1 day',
-// };
+// }

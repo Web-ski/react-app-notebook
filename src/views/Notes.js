@@ -18,6 +18,7 @@ key={title} />
 
 const mapStateToProps = (state) => {
   const { notes } = state;
+  console.log(notes);
   return { notes };
 };
 

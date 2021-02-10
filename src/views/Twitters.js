@@ -21,6 +21,7 @@ const Twitters = ({ twitters }) => (
 
 const mapStateToProps = (state) => {
   const { twitters } = state;
+  console.log(twitters);
   return { twitters };
 };
 
