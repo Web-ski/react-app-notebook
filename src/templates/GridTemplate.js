@@ -73,7 +73,8 @@ placeholder="Search" />
         <StyledButtonIcon onClick={handleVisbility}
 icon={plusIcon}
 activeColor={pageContext} />
-        <RightBar isVisible={visibileRightBar} />
+        <RightBar handleClose={handleVisbility}
+isVisible={visibileRightBar} />
       </StyledWrapper>
     </UserPageTemplate>
   );

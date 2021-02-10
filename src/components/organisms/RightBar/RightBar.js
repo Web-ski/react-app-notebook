@@ -7,6 +7,7 @@ import Heading from 'components/atoms/Heading/Heading';
 import withContext from 'hots/withContext';
 import { connect } from 'react-redux';
 import { addItemAction } from 'api/actions';
+import { Formik, Form } from 'formik';
 
 const StyledWrapper = styled.div`
   z-index: 99;
@@ -33,24 +34,67 @@ const StyledInput = styled(Input)`
   margin: 0 0 20px;
 `;
 
-const RightBar = ({ pageContext, isVisible, addAction }) => (
+const StyledForm = styled(Form)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const RightBar = ({ pageContext, isVisible, addAction, handleClose }) => (
   <StyledWrapper isVisible={isVisible}>
     <Heading big>Add new {pageContext}</Heading>
-    <StyledInput placeholder={pageContext === 'twitters' ? 'twitter account name' : 'title'} />
-    {pageContext === 'articles' && <StyledInput placeholder="link" />}
-    <StyledTexArea as="textarea"
-placeholder="text" />
-    <Button
-      onClick={() =>
-        addAction(pageContext, {
-          title: 'hejjejj',
-          content: 'kokoninfokvxovdvndvodn ivjoadfivhodv njv iaivjiajv',
-        })
-      }
-      activeColor={pageContext}
+    <Formik
+      initialValues={{ title: '', content: '', articleUrl: '', twitterName: '', created: '' }}
+      onSubmit={(values) => {
+        addAction(pageContext, values);
+        handleClose();
+      }}
     >
-      Add Note
-    </Button>
+      {({ values, handleChange, handleBlur, handleSubmit }) => (
+        <StyledForm onSubmit={handleSubmit}>
+          <StyledInput
+            type="text"
+            name="title"
+            placeholder="title"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.title}
+          />
+          {pageContext === 'articles' && (
+            <StyledInput
+              name="articleUrl"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="link"
+              value={values.articleUrl}
+            />
+          )}
+          {pageContext === 'twitters' && (
+            <StyledInput
+              name="twitterName"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              placeholder="twitter account name"
+              value={values.twitterName}
+            />
+          )}
+          <StyledTexArea
+            as="textarea"
+            name="content"
+            placeholder="text"
+            onChange={handleChange}
+            onBlur={handleBlur}
+            value={values.content}
+          />
+          <Button
+            type="submit"
+            // disabled={isSubmitting}
+            activeColor={pageContext}
+          >
+            Add Note
+          </Button>
+        </StyledForm>
+      )}
+    </Formik>
   </StyledWrapper>
 );
 
@@ -62,6 +106,7 @@ RightBar.propTypes = {
   pageContext: PropTypes.string.isRequired,
   isVisible: PropTypes.bool.isRequired,
   addAction: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default connect(null, mapDispatchToProps)(withContext(RightBar));
