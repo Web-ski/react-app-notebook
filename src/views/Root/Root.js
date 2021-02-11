@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from 'api/store';
 import MainTemplate from 'templates/MainTemplate';
+import Login from 'views/Login';
 import Notes from 'views/Notes';
 import Twitters from 'views/Twitters';
 import Articles from 'views/Articles';
@@ -14,6 +15,10 @@ const Root = () => (
     <BrowserRouter>
       <MainTemplate>
         <Switch>
+          <Route exact
+path={routes.login}>
+            <Login />
+          </Route>
           <Route exact
 path={routes.home}>
             <Redirect to="/notes" />

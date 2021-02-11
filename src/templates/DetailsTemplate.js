@@ -64,7 +64,7 @@ const DetailsTemplate = ({
   twitterName,
   articleUrl,
   content,
-  cardId,
+  // cardId,
   pageContext,
 }) => (
   <UserPageTemplate pageType={pageContext}>
@@ -72,7 +72,6 @@ const DetailsTemplate = ({
       <StyledWrapperNote>
         <StyledHeading big>{title}</StyledHeading>
         <DateInfo>{created}</DateInfo>
-        <Paragraph>No {cardId}</Paragraph>
         <Paragraph>{content}</Paragraph>
         {pageContext === 'twitters' && (
           <StyledImage
@@ -98,7 +97,7 @@ DetailsTemplate.propTypes = {
   twitterName: PropTypes.string,
   articleUrl: PropTypes.string,
   content: PropTypes.string.isRequired,
-  cardId: PropTypes.number.isRequired,
+  // cardId: PropTypes.number.isRequired,
 };
 
 DetailsTemplate.defaultProps = {

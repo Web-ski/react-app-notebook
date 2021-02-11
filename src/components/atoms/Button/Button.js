@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  background-color: ${({ activeColor, theme }) => (activeColor ? theme[activeColor] : theme.notes)};
+  background-color: ${({ activecolor, theme }) => (activecolor ? theme[activecolor] : theme.notes)};
   border: none;
   color: white;
   padding: 15px 25px;
